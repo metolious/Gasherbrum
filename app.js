@@ -42,8 +42,8 @@ var pool = new Pool(config);
 
 app.get('/', (req, res, next) => {
     var status = "200"
-    // var obj = [{ "route(1)": "ROOT" }, { "route(2)": "/file" }]
-    var obj = [{ "route(3)": "/save" }, { "route(4)": "/upload" }]
+    var obj = [{ "route(1)": "ROOT" }, { "route(2)": "/file" }]
+    // var obj = [{ "route(3)": "/save" }, { "route(4)": "/upload" }]
     res.status(status).json(obj)
 });
 
