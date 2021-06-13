@@ -44,7 +44,9 @@ app.get('/', (req, res, next) => {
     var status = "200"
     // var obj = [{ "route(1)": "ROOT" }, { "route(2)": "/file" }]
     var obj = [{ "route(3)": "/save" }, { "route(4)": "/upload" }]
-    res.status(status).json(obj)
+    // res.status(status).json(obj)
+    res.status(status).send(req.body)
+
 });
 
 app.put('/save', (req, res, next) => {
