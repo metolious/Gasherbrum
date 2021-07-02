@@ -42,28 +42,20 @@ var config = {
 
 var pool = new Pool(config);
 
-app.get('/', (req, res, next) => {
-    var status = "200"
-    // var obj = [{ "route(1)": "ROOT" }, { "route(2)": "/file" }]
-    var obj = [{ "route(3)": "/save" }, { "route(4)": "/upload" }]
-    if (req.body != null)
-      res.status(status).send(req.body)
-    else 
-      res.status(status).json(obj)
-});
-
-app.put('/save', (req, res, next) => {
-console.log(`indexjs: put /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
+app.get('/get-routes', (req, res, next) => {
+console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
   var status = "200"
-  var obj = [{ "route(3)": "/save" }, { "route(4)": "/upload" }]
-  res.status(status).send(req.body)
+  var obj = [{ "route(3)": "/get-routes" }, { "route(4)": "/upload" }]
+  // res.status(status).send(req.body)
+  res.status(status).send(obj)
 });
 
   app.post('/save', (req, res, next) => {
-  console.log(`app.js: put /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
+  console.log(`app.js: post /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
     var status = "200"
     var obj = [{ "route(5)": "/image" }, { "route(6)": "/edit" }]
-    res.status(status).send(req.body) 
+    // res.status(status).send(req.body) 
+    res.status(status).send(obj) 
   });
 
 
