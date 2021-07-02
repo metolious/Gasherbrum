@@ -1,5 +1,6 @@
 const http = require('http');
-var express = require('express');
+var express = require('express')
+//  app = express.createServer();
 const app = express();
 const { Pool, Client } = require('pg');
 const router = express.Router();
@@ -24,6 +25,7 @@ var allowCrossDomain = function(req, res, next) {
 }
 
 app.use(allowCrossDomain);
+// app.use(express.bodyparser());
 
 const client = new Client();
 // add peice of middleware to parse json in body of request 
@@ -51,7 +53,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.put('/save', (req, res, next) => {
-// console.log(`indexjs: put /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
+console.log(`indexjs: put /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
   var status = "200"
   var obj = [{ "route(3)": "/save" }, { "route(4)": "/upload" }]
   res.status(status).send(req.body)
