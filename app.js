@@ -66,6 +66,14 @@ console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.strin
     res.status(status).send(obj) 
   });
 
+  app.put('/save', (req, res, next) => {
+    console.log(`app.js: put /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
+      var status = "200"
+      var obj = [{ "route(5)": "/image" }, { "route(6)": "/edit" }]
+      // res.status(status).send(req.body) 
+      res.status(status).send(obj) 
+    });
+
 
 app.get('/cases-callback', (request, response) => {
   pool.query('select * from cases', (error, result) => {
