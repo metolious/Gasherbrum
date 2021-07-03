@@ -46,32 +46,32 @@ app.get('/', (req, res, next) => {
   console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
     var status = "200"
     var obj = [{ "route(3)": "/get-routes" }, { "route(4)": "/upload" }]
-    // res.status(status).send(req.body)
-    res.status(status).send(obj)
+    res.status(status).send(req.body)
+    // res.status(status).send(obj)
   });
 
 app.get('/get-routes', (req, res, next) => {
 console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
   var status = "200"
   var obj = [{ "route(3)": "/get-routes" }, { "route(4)": "/upload" }]
-  // res.status(status).send(req.body)
-  res.status(status).send(obj)
+  res.status(status).send(req.body)
+  // res.status(status).send(obj)
 });
 
   app.post('/save', (req, res, next) => {
   console.log(`app.js: post /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
     var status = "200"
-    var obj = [{ "route(5)": "/image" }, { "route(6)": "/edit" }]
-    // res.status(status).send(req.body) 
-    res.status(status).send(obj) 
+    var obj = [{ "post(5)": "/image" }, { "post(6)": "/edit" }]
+    res.status(status).send(req.body) 
+    // res.status(status).send(obj) 
   });
 
   app.put('/save', (req, res, next) => {
     console.log(`app.js: put /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
       var status = "200"
-      var obj = [{ "route(5)": "/image" }, { "route(6)": "/edit" }]
-      // res.status(status).send(req.body) 
-      res.status(status).send(obj) 
+      var obj = [{ "put(5)": "/image" }, { "put(6)": "/edit" }]
+      res.status(status).send(req.body) 
+      // res.status(status).send(obj) 
     });
 
 
