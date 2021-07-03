@@ -42,6 +42,14 @@ var config = {
 
 var pool = new Pool(config);
 
+app.get('/', (req, res, next) => {
+  console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
+    var status = "200"
+    var obj = [{ "route(3)": "/get-routes" }, { "route(4)": "/upload" }]
+    // res.status(status).send(req.body)
+    res.status(status).send(obj)
+  });
+
 app.get('/get-routes', (req, res, next) => {
 console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
   var status = "200"
@@ -248,4 +256,4 @@ app.get('/cases/:id', (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port,  () => console.log(`RUNNING on port ${port}`));
+app.listen(port, () => console.log(`RUNNING on port ${port}`));
