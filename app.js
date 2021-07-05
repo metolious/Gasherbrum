@@ -19,8 +19,8 @@ var db = pgp(conn);
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', "*");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  //res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  // res.header('Access-Control-Allow-Headers', 'Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control');
   next();
 }
 
@@ -43,19 +43,19 @@ var config = {
 var pool = new Pool(config);
 
 app.get('/', (req, res, next) => {
-  console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
+  console.log(`indexjs: get /get-routes returns obj = [{ "route(3)": "/" }, { "route(4)": "/upload" }]`)
     var status = "200"
-    var obj = [{ "route(3)": "/get-routes" }, { "route(4)": "/upload" }]
-    res.status(status).send(req.body)
-    // res.status(status).send(obj)
+    var obj = [{ "route(3)": "/" }, { "route(4)": "/upload" }]
+    // res.status(status).send(req.body)
+    res.status(status).send(obj)
   });
 
 app.get('/get-routes', (req, res, next) => {
 console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
   var status = "200"
   var obj = [{ "route(3)": "/get-routes" }, { "route(4)": "/upload" }]
-  res.status(status).send(req.body)
-  // res.status(status).send(obj)
+  // res.status(status).send(req.body)
+  res.status(status).send(obj)
 });
 
   app.post('/save', (req, res, next) => {
@@ -73,7 +73,6 @@ console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.strin
       res.status(status).send(req.body) 
       // res.status(status).send(obj) 
     });
-
 
 app.get('/cases-callback', (request, response) => {
   pool.query('select * from cases', (error, result) => {
