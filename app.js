@@ -49,13 +49,22 @@ app.get('/', (req, res, next) => {
     res.status(status).send(jsonObject)
   });
 
-app.get('/get-routes', (req, res, next) => {
+app.get('/mie/resources/vessel', (req, res, next) => {
 console.log(`indexjs: put /get-routes JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
   var status = "200"
-  var jsonObject = [{ "route(3)": "/get-routes" }, { "route(4)": "/upload" }]
+  // var jsonObject = [{ "route(3)": "/get-routes" }, { "route(4)": "/upload" }]
+  var jsonObject = [{"label":"securityLabel","value":"CONFIDENTIAL_REL_TO_USA_FVEY"},{"label":"aspect","value":"BROADSIDE"},{"label":"imageSource","value":"OPMARINE"},{"label":"sconums","value":["M00007"]},{"label":"iirNumbers","value":["22222"]},{"label":"otherSources","value":["33333"]},{"label":"imageDate","value":""},{"label":"amidshipsId","value":["11111"]},{"label":"primeImage","value":{"name":"True","value":1}},{"label":"distribution","value":{"name":"False","value":2}},{"label":"pageSize","value":{"name":"250","value":250}},{"label":"sortSelect","value":""},{"label":"sortOrder","value":{"name":"Ascending","value":"ASC"}},{"label":"sortField","value":"Image_Source"},{"label":"valCheck","value":[null]},{"label":"imoNumber","value":["55555"]},{"label":"mmsiNumber","value":["77777"]},{"label":"callSign","value":["SOS"]},{"label":"vesselName","value":[]},{"label":"modifiedBy","value":"JMORIARTY"},{"label":"approvedBy","value":"JWATSON"},{"label":"uploadedBy","value":"JMORIARTY"}]
   // res.status(status).send(req.body)
   res.status(status).send(jsonObject)
 });
+
+app.post('/mie/resources/vessel/update', (req, res, next) => {
+  console.log(`app.js: post /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
+    var status = "200"
+    var jsonObject = [{ "post(5)": "/image" }, { "post(6)": "/edit" }]
+    res.status(status).send(req.body) 
+    // res.status(status).send(jsonObject) 
+  });
 
   app.post('/save', (req, res, next) => {
   console.log(`app.js: post /save JSON.stringify(req.body[0]) = ${JSON.stringify(req.body[0])}`)
